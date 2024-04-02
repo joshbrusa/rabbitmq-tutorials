@@ -1,0 +1,26 @@
+version: "3"
+
+tasks:
+  start-rabbitmq:
+    desc: Starts the RabbitMQ container.
+    dir: ./rabbitmq
+    cmds:
+      - docker compose -f compose.yml up -d
+
+  stop-rabbitmq:
+    desc: Stops the RabbitMQ container.
+    dir: ./rabbitmq
+    cmds:
+      - docker compose -f compose.yml down
+
+  send:
+    desc: Sends a message.
+    dir: ./src/commands
+    cmds:
+      - node send.js
+
+  receive:
+    desc: Receives a message.
+    dir: ./src/commands
+    cmds:
+      - node receive.js
